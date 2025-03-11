@@ -12,7 +12,9 @@
     Data/
       Train/Data/:  Files related to the training set
         train_images/: Images for the training set. The images are named in chronological order as 0.png, 1.png ....
-        labels/: Bounding_box labels, for each image that contains cracks a .txt with the same name as the image was created.
+        labels/: Bounding_box labels, for each image that contains cracks a .txt with the same name as the image was created. Each bounding box was created in the YOLO format as described in the Ultralitics website.
+        labels_filtered/: The 'labels/' directory contains very small bounding_boxes located in the dark area of the pipe. They could cause problem, and these labels are filtered out in this folder.
+        train_label_1_image/
     </pre>
           
   </body>
