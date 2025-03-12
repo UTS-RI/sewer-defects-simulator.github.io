@@ -10,11 +10,19 @@
     The following shows the structure of the dataset repository
     <pre>
     Data/
-      Train/Data/:  Files related to the training set
+      Train_Data/:  Files related to the training set
         train_images/: Images for the training set. The images are named in chronological order as 0.png, 1.png ....
         labels/: Bounding_box labels, for each image that contains cracks a .txt with the same name as the image was created. Each bounding box was created in the YOLO format as described in the Ultralitics website.
-        labels_filtered/: The 'labels/' directory contains very small bounding_boxes located in the dark area of the pipe. They could cause problem, and these labels are filtered out in this folder.
-        train_label_1_image/
+        labels_filtered/: The 'labels/' directory contains very small bounding_boxes located in the dark area of the pipe. They could cause problems, and these labels are filtered out in this folder.
+        train_label_1_image/, train_label_2_image/,train_label_3_image/: If there are cracks in a pipe section, there could be 1-3 cracks. These three folders contain blue crack masks on black backgrounds indicating the location of cracks for each image in the train_images/ folder
+        image_filtered/: Contains annotated training images. 
+        annotation_cracks.py: It creates the files in 'label_filtered/' folder using the mask in the train_label_1_image/, train_label_2_image/,train_label_3_image/ folder
+      Valid_Data/: Files related to the validation set
+        It has a similar structure to the Train_data folder, however: 
+        1. The images and labels are named using the time stamp when the simulated camera takes them 
+        2. Camera_position.txt contains the location of the camera at each time point. 
+        3. acc_data.txt contains the linear acceleration of the camera at each time point when an image is taken by a camera.
+      Test_Data/: Files related to the test set. It has the same structure as the validation set.
     </pre>
           
   </body>
