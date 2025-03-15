@@ -9,7 +9,7 @@
     This webpage will be updated as we work further.</p>
     <h2>The Data set</h2>
     The dataset mentioned and benchmarked by a YOLOv8 model in the paper is available at <ahref >https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EaTnSub7cb5EjUkvv_ludQIBtSzMWhrbH4Bx1OcQV6SOnA?e=MzBzJb </ahref>
-    The following shows the structure of the dataset repository
+    </ahref>
     <pre>
     Data/
       Train_Data/:  Files related to the training set
@@ -30,9 +30,23 @@
     <p>This paper also presents a pipe simulation. We are working towards adding keyboard control to the camera, and it will be updated along with our next paper</p>
     <h3>Crack masks and pipe materials</h3>
     <p>As described in the paper, the materials of the virtual sewer pipes are created by using the crack masks provided by the  Syncrack project [1]( <ahref >https://github.com/Sutadasuto/syncrack_generator</ahref>)
-    and the Crack Diffusion Model[2] (<ahref >https://github.com/SEU-zhc/CDM</ahref>). While the detailed usage </p>
+    and the Crack Diffusion Model[2] (<ahref >https://github.com/SEU-zhc/CDM</ahref>). While the detailed usage. </p>
+
+    <p>We have already created pipe material and they can be found at  <ahref >https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EZujO-sj_shMkN0ND8xVIzgBxqVUA1rBzlp2tHDr6vI3Tg?e=wjmwoR</ahref> </p>
+    <p>The folder is called m (for material) and it consists of three sub folders</p>
+    <pre>
+    m/
+      train/: materials relating to the training set. 
+        train_pipe/: Materials applied to the pipe used to generate the training set. Each material image is applied onto one section of the pipe.
+        train_label_1/, train_label_1/, and train_label_1/: Each section can contain 1 - 3 cracks, and each of the three folders contains one crack mask in blue on black background for each pipe section.
+      valid/: materials relating the the valid set, and it has the same structure as '/train' folder.
+      test/: materials relating the the test set, and it has the same structure as '/train' folder.
+    </pre>
+
+
+
+
     
-      
   [1] R. Rill-Garc´ıa, E. Dokladalova, and P. Dokl´adal, “Syncrack: Improv-
 ing pavement and concrete crack detection through synthetic data
 generation,” in 17th International Joint Conference on Computer
