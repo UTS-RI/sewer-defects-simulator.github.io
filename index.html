@@ -7,6 +7,7 @@
     <h1>A sewer pipe crack simulator and data set</h1>
     <p>This webpage contains the dataset and simulator mentioned in the paper 'PIPE-SIM: An In-Pipe Simulator and Dataset for Crack Assessments' 
     This webpage will be updated as we work further.</p>
+    <p>The next update will be a complete IMU cable of recording rotational acceleration, more complicated pipe setup with turns and camera movement control with keyboard</p>
     <h2>The Data set</h2>
     The dataset mentioned and benchmarked by a YOLOv8 model in the paper is available at <ahref >https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EaTnSub7cb5EjUkvv_ludQIBtSzMWhrbH4Bx1OcQV6SOnA?e=MzBzJb </ahref>
     </ahref>
@@ -26,7 +27,7 @@
         3. acc_data.txt contains the linear acceleration of the camera at each time point when an image is taken by a camera.
       Test_Data/: Files related to the test set. It has the same structure as the validation set.
     </pre>
-    <h2>The simulator framework</h2>
+    <h2>The Simulation</h2>
     <h3>Materials and texture assets</h3>
     <p>This paper also presents a pipe simulation. We are working towards adding keyboard control to the camera, and it will be updated along with our next paper</p>
     <h3>Crack masks and pipe materials</h3>
@@ -43,7 +44,12 @@
       valid/: materials relating the the valid set, and it has the same structure as '/train' folder.
       test/: materials relating the the test set, and it has the same structure as '/train' folder.
     </pre>
-
+    <h3>Creating Pipe Sections With Blender</h3>
+    <p>The bg-m.blender file is the simulated pipe with all materials applied. A python code for automatically creating this pipes
+    can be found by clicking the Scripting tap. This code create multiple small pipe sections and apply materials using Blender UV Editor. More details can be found in the comments
+    To test it, just delete all pipe sections under the default Collection and click run. After the pipes are created, 
+    click File/External Data/Pack Resources and then click File/External Data/Unpack Resources. Finally save the .blender file. These steps are necessary for the materials to be loaded properly in Unity</p>
+    <h3>Explanation of the Unity project</h3>
 
 
 
