@@ -68,17 +68,19 @@
       Select the camera and, in the inspector, untick the box in front of the Apply_force and Accelerometer script.
       Expand the Pipe_move script, tick the Follow_previous_path box, and untick Constant_move and Save_trace box. 
     3: Applying a varing force to the camera to simulate a camera driven by an external force and friction. To do this, the Rigidbody 
-      property must be used, and a mass and drag must be assigned. A working example of these properties has already been applied. Then, tick 
-      the box in front of all three scripts. The magnitude of the force is defined by the public static float m_Thrust variable, and the force is 
-      altered by a random number before being applied to the camera. This can be changed easily in apply_force.cs. The Accelerometer script is 
-      a working accelerometer, and nothing needs to be changed. This accelerometer can be used for any Rigidbody object. For the Pipe_move script, 
-      untick Constant_move and Follow_previous_path. Tick Time_name and the photos will be named by the time 
-      point when they are taken in nano seconds from the beginning of the simulation. This aligns with the Orb-Slam requirements, which we will discuss
+      property must be used, and a mass and drag must be assigned. A working example of these properties has already been applied. Then, tick Apply_force and Pipe_move scripts. 
+      The magnitude of the force is defined by the public static float m_Thrust variable, and a random number alters the force before being applied to the camera. This can be changed easily in apply_force.cs. 
+      For the Pipe_move script, untick Constant_move and Follow_previous_path. Tick Time_name, and the photos will be named by the time point when they are taken in nanoseconds from the beginning of the simulation. This aligns with the Orb-Slam requirements, which we will discuss
       further in our next publication. The acceleration measurements were not used in the paper we submitted. Then tick Save_images and/or Save_trace if 
       you wish to save the photo and trace of the camera. 
     The home/image_name.txt saves the name of all photos without their .png extension.
-    
+  
     </pre>
+    <p>The Accelerometer script is an accelerometer that can be used for non-rigidbody objects, but since the camera is a Rigidbody, it is not used here. It might be used for users who need non-Rigidbody objects. The accelerometer is embedded into the Pipe_move script using 
+    Unity's RigidBody features, it is much more accurate than the Accelerometer script</p>
+
+
+    
     <p>After one pipe is inspected, the pipe can be deleted, and the next pipe can be created by using the Blender script for another experiment.</p>
 
     <p>m.zip folder contains all the materials and texture assets we used to create the pipes we mentioned in the paper, and from the pipes, we collected the dataset 
