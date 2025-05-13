@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A sewer pipe crack simulator and data set </title>
+  </head>
+  <body>
+    <h1>A sewer pipe crack simulator and data set</h1>
+    <p>This webpage contains the dataset and simulator mentioned in the paper 'PIPE-SIM: An In-Pipe Simulator and Dataset for Crack Assessments' 
+    This webpage will be updated as we work further.</p>
+    <p>The next update will be a complete IMU cable for recording rotational acceleration, a more complicated pipe setup with turns, and camera movement control with keyboard</p>
+    <h2>The Data set</h2>
+    The dataset mentioned and benchmarked by a YOLOv8 model in the paper is available at <ahref >https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EaTnSub7cb5EjUkvv_ludQIBtSzMWhrbH4Bx1OcQV6SOnA?e=MzBzJb </ahref>
+    </ahref>
+    <pre>
+    Data/
+      Train_Data/:  Files related to the training set
+        train_images/: Images for the training set. The images are named in chronological order as 0.png, 1.png ....
+        labels/: Bounding_box labels, for each image that contains cracks a .txt with the same name as the image was created. Each bounding box was created in the YOLO format as described in the Ultralitics website.
+        labels_filtered/: The 'labels/' directory contains very small bounding_boxes located in the dark area of the pipe. They could cause problems, and these labels are filtered out in this folder.
+        train_label_1_image/, train_label_2_image/,train_label_3_image/: If there are cracks in a pipe section, there could be 1-3 cracks. These three folders contain blue crack masks on black backgrounds indicating the location of cracks for each image in the train_images/ folder
+        image_filtered/: Contains annotated training images. 
+        annotation_cracks.py: It creates the files in 'label_filtered/' folder using the mask in the train_label_1_image/, train_label_2_image/,train_label_3_image/ folder
+      Valid_Data/: Files related to the validation set
+        It has a similar structure to the Train_data folder, however: 
+        1. The images and labels are named using the time stamp when the simulated camera takes them 
+        2. Camera_position.txt contains the location of the camera at each time point. 
+        3. acc_data.txt contains the linear acceleration of the camera at each time point when an image is taken by a camera.
+      Test_Data/: Files related to the test set. It has the same structure as the validation set.
+    </pre>
+    <h2>The Simulation</h2>
+    <h3>Materials and texture assets</h3>
+    <p>This paper also presents a pipe simulation. We are working towards adding keyboard control to the camera, and it will be updated along with our next paper</p>
+    <h3>Crack masks and pipe materials</h3>
+    <p>As described in the paper, the materials of the virtual sewer pipes are created by using the crack masks provided by the  Syncrack project [1]( <ahref >https://github.com/Sutadasuto/syncrack_generator</ahref>)
+    and the Crack Diffusion Model[2] (<ahref >https://github.com/SEU-zhc/CDM</ahref>). While the detailed usage. </p>
+
+    <p>We have already created pipe material, and they can be found at  <ahref >https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EZujO-sj_shMkN0ND8xVIzgBxqVUA1rBzlp2tHDr6vI3Tg?e=wjmwoR</ahref> </p>
+    <p>The folder is called m (for material), and it consists of three subfolders </p>
+    <pre>
+    m/
+      train/: materials relating to the training set. 
+        train_pipe/: Materials applied to the pipe used to generate the training set. Each material image is applied onto one section of the pipe.
+        train_label_1/, train_label_1/, and train_label_1/: Each section can contain 1 - 3 cracks, and each of the three folders contains one crack mask in blue on black background for each pipe section.
+      valid/: materials relating to the valid set, and it has the same structure as the '/train' folder.
+      test/: materials relating to the test set, and it has the same structure as '/train' folder.
+    </pre>
+    <p>The Unity project directory is available at https://studentutsedu-my.sharepoint.com/:u:/g/personal/xing_wang_student_uts_edu_au/EcncbQ80mvhGpm8SiQ-430YBTkmS2KYMWVeEY2fu7wadrQ?e=O6M2H3 </p>
+    <h3>Creating Pipe Sections With Blender</h3>
+    <p>The home/Assests/bg-m.blender file is the simulated pipe with all materials applied. Home is the project folder you download, and it can have any name. A Python code for automatically creating these pipes
+    can be found by clicking the Scripting tab. This code creates multiple small pipe sections and applies materials using Blender UV Editor. More details can be found in the comments
+    To test it, delete all pipe sections under the default Collection and click run. After the pipes are created, 
+    click File/External Data/Pack Resources and then click File/External Data/Unpack Resources. Finally, save the .blender file. These steps are necessary for the materials to be loaded properly in Unity</p>
+    <h3>Explanation of the Unity project</h3>
+    <p>All assets and codes can be found in the folder home/Assests/ home is the project folder you download and it can have any name</p>
+    <p>The Unity project already contains the pipe model used to create the training set of the dataset. The pipes used for creating
+      the valid and test set can be made by using the blender script mentioned above. The camera object in the scene hierarchy travels into the pipe
+      and takes photos of it. There are currently three ways to control the camera: </p>
+    <pre>
+    
+    1: Moving the pipe at a constant speed
+      This is how the training set was created and suitable for training a deep learning model.
+      To use this, select the camera and, in the inspector, untick the box in front of the Apply_force and Accelerometer script.
+      Expand the Pipe_move script, tick the Constant_move and Save_images box, and then the camera will move into the pipe at the constant speed defined by
+      the public float moveSpeed variable. The speed can be changed by changing this variable. The photos taken by the camera are then saved to 
+      the home/frame/ folder. The position of the camera is saved to the camera_position.txt file if the Save_trace box is taken. At this moment, the camera moves 
+      along only the z-axis. More free and complex movement is going to be updated along with our next publication.
+    2: Following the path recorded in the camera_position.txt file: 
+      Select the camera and, in the inspector, untick the box in front of the Apply_force and Accelerometer script.
+      Expand the Pipe_move script, tick the Follow_previous_path box, and untick Constant_move and Save_trace box. 
+    3: Applying a varing force to the camera to simulate a camera driven by an external force and friction. To do this, the Rigidbody 
+      property must be used, and a mass and drag must be assigned. A working example of these properties has already been applied. Then, tick Apply_force and Pipe_move scripts. 
+      The magnitude of the force is defined by the public static float m_Thrust variable, and a random number alters the force before being applied to the camera. This can be changed easily in apply_force.cs. 
+      For the Pipe_move script, untick Constant_move and Follow_previous_path. Tick Time_name, and the photos will be named by the time point when they are taken in nanoseconds from the beginning of the simulation. This aligns with the Orb-Slam requirements, which we will discuss
+      further in our next publication. The acceleration measurements were not used in the paper we submitted. Then tick Save_images and/or Save_trace if 
+      you wish to save the photo and trace of the camera. 
+    The home/image_name.txt saves the name of all photos without their .png extension.
+  
+    </pre>
+    <p>The Accelerometer script is an accelerometer that can be used for non-rigidbody objects, but since the camera is a Rigidbody, it is not used here. It might be used for users who need non-Rigidbody objects. The accelerometer is embedded into the Pipe_move script using 
+    Unity's RigidBody features, it is much more accurate than the Accelerometer script</p>
+
+
+    
+    <p>After one pipe is inspected, the pipe can be deleted, and the next pipe can be created by using the Blender script for another experiment.</p>
+
+    <p>m.zip folder contains all the materials and texture assets we used to create the pipes we mentioned in the paper, and from the pipes, we collected the dataset 
+    contained in Data.zip and presented in the paper.</p>
+    
+    
+      
+
+
+
+    
+  [1] R. Rill-Garc´ıa, E. Dokladalova, and P. Dokl´adal, “Syncrack: Improv-
+ing pavement and concrete crack detection through synthetic data
+generation,” in 17th International Joint Conference on Computer
+Vision, Imaging and Computer Graphics Theory and Applications
+
+[2]H. Zhang, Z. Qian, W. Zhou, Y. Min, and P. Liu, “A controllable gener-
+ative model for generating pavement crack images in complex scenes,”
+Computer-Aided Civil and Infrastructure Engineering, vol. 39, no. 12,
+pp. 1795–1810, 202
+(VISAPP’22), 2022
+  </body>
+</html>
