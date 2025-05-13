@@ -136,7 +136,7 @@
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data</span>
+                  <span>The simulation project and dataset with a tutorial</span>
                   </a>
               </span>
             </div>
@@ -150,12 +150,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!--
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      -->
+  
       <img src="./static/images/teaser.png"
             class="teaser-image"
             alt="Teaser."/>
@@ -166,64 +161,7 @@
   </div>
 </section>
 
-<!--
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -233,40 +171,41 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Over the past decade, lidars have become a cornerstone of robotics state estimation and perception thanks to their ability to provide accurate geometric information about their surroundings in the form of 3D scans.
-            Unfortunately, most of nowadays lidars do not take snapshots of the environment but sweep the environment over a period of time (typically around 100 ms).
-            Such a rolling-shutter-like mechanism introduces motion distortion into the collected lidar scan, thus hindering downstream perception applications.
-            In this paper, we present a novel method for motion distortion correction of lidar data by tightly coupling lidar with Inertial Measurement Unit (IMU) data.
-            The motivation of this work is map-free dynamic object detection based on lidar.
-            The proposed lidar data undistortion method relies on continuous preintegrated of IMU measurements that allow parameterising the sensors' continuous 6-DoF trajectory using solely eleven discrete state variables (biases, initial velocity, and gravity direction).
-            The undistortion consists of feature-based distance minimisation of point-to-line and point-to-plane residuals in a non-linear least-square formulation.
-            Given undistorted geometric data over a short temporal window, the proposed pipeline computes the spatiotemporal normal vector of each of the lidar points.
-            The temporal component of the normals is a proxy for the corresponding point's velocity, therefore allowing for learning-free dynamic object classification without the need for registration in a global reference frame.
-            We demonstrate the soundness of the proposed method and its different components using public datasets and compare them with state-of-the-art lidar-inertial state estimation and dynamic object detection algorithms.
+            Inspection of highly valued wastewater pipe infrastructure is vital for cities worldwide, and many researchers
+are trying to circumvent the limitations of traditional inspection methods using computer vision and robotic approaches.
+However, these efforts are undermined by the limited access to
+high-quality open-source data sets. The data sets should include
+not only image sequences but also time stamps and Inertial
+Measurement Unit (IMU) data, enabling researchers to simulate
+a full pipe inspection by a robot. Bounding-box annotations
+that indicate the location of the defects in the images are also
+desirable. Limitations to current data sets are due to the lack
+of some aforementioned information or their accessibility. This
+paper presents our work on creating a sewer pipe simulator
+and an example data set created using it. This simulator is
+highly adaptable and editable, with all its assets accessible to
+users. We also include an analysis of this data set using a You
+Only Look Once (YOLO) v8 model in the paper. This simulator can serve
+as the first step toward facilitating sewer defect detection using
+simulated data, and it points out the possibility of creating
+synthetic sewer data by leveraging the power of gaming engine and 
+generative models. Users can easily create their own data sets
+by changing the background texture, using new crack masks,
+adding additional objects or defective features, or altering the
+movement of the camera by following our tutorial or code
+comments.
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <!-- 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    -->
-    <!--/ Paper video. -->
+   
   </div>
 </section>
 
 
-
+<!--
 <section class="section" id="IROS_vid">
   <div class="container is-max-desktop content">
     <h2 class="title">Presentation at IROS 2024</h2>
@@ -289,7 +228,8 @@
       </video>
   </div>
 </section>
-
+  -->
+<!--
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -304,7 +244,7 @@
 </code></pre>
   </div>
 </section>
-
+-->
 
 <footer class="footer">
   <div class="container">
