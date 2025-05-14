@@ -72,7 +72,7 @@
       To use this, select the camera and, in the inspector, untick the box in front of the Apply_force and Accelerometer script.
       Expand the Pipe_move script, tick the Constant_move and Save_images box, and then the camera will move into the pipe at the constant speed defined by
       the public float moveSpeed variable. The speed can be changed by changing this variable. The photos taken by the camera are then saved to 
-      the home/frame/ folder. The position of the camera is saved to the camera_position.txt file if the Save_trace box is taken. At this moment, the camera moves 
+      the home/frame/ folder. The camera position is saved to the camera_position.txt file if the Save_trace box is taken. At this moment, the camera moves 
       along only the z-axis. More free and complex movement is going to be updated along with our next publication.
     2: Following the path recorded in the camera_position.txt file: 
       Select the camera and, in the inspector, untick the box in front of the Apply_force and Accelerometer script.
@@ -91,7 +91,7 @@
     <p>The Accelerometer script is an accelerometer that can be used for non-rigidbody objects, but since the camera is a Rigidbody, it is not used here. It might be used for users who need non-Rigidbody objects. The accelerometer is embedded into the Pipe_move script using 
     Unity's RigidBody features, it is much more accurate than the Accelerometer script</p>
 
-
+<p>Update: The pipe_move.cs script attached to the camera is replaced by <a href="./additional_assests/pipe_move.cs" class="external-link button is-normal is-rounded is-dark">this script </a>, which allows to record the acceleration and gyroscope data of the camera during its movement. The parameter 'IMU_frequency_scale' sets the ratio of IMU frequency to the frame rate. For example if this is set to 10, the IMU rate is 10 times faster than the camera frame rate and this is useful for visual inertia odometry.</p>
     
     <p>After one pipe is inspected, the pipe can be deleted, and the next pipe can be created by using the Blender script for another experiment.</p>
 
