@@ -82,7 +82,18 @@
       The magnitude of the force is defined by the public static float m_Thrust variable, and a random number alters the force before being applied to the camera. This can be changed easily in apply_force.cs. 
       For the Pipe_move script, untick Constant_move and Follow_previous_path. Tick Time_name, and the photos will be named by the time point when they are taken in nanoseconds from the beginning of the simulation. This aligns with the Orb-Slam requirements, which we will discuss
       further in our next publication. The acceleration measurements were not used in the paper we submitted. Then tick Save_images and/or Save_trace if 
-      you wish to save the photo and trace of the camera. 
+      you wish to save the photo and trace of the camera.
+    4: Controlling the camera via keyboard, the camera movement can now be controlled by keyboard. The up, down, right, and left arrow keys apply a linear force to the camera, and the a, w, s, and d keys apply rotational force. The direction and magnitude can be easily changed. To use the
+      keyboard control, untick all other movement controls, and attach 
+      <span class="link-block">
+                <a href="./additional_assests/keyboard_control.cs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>this scripts</span>
+                  </a>
+              </span>to the camera.
     The home/image_name.txt saves the name of all photos without their .png extension.
   
     </pre>
